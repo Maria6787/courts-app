@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ───────────────────────────────────────────────────────────
+   Base theme tokens. The `.dark` class is toggled on <html> by
+   the ThemeContext for class-based dark mode.
+   ─────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  .dark {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased transition-colors duration-300;
+  }
+  .dark body {
+    @apply bg-slate-950 text-slate-100;
+  }
+}
+
+/* ───────────────────────────────────────────────────────────
+   Reusable glassmorphic surface + brand gradient utilities.
+   ─────────────────────────────────────────────────────────── */
+@layer components {
+  .glass {
+    @apply border border-white/40 bg-white/60 shadow-xl backdrop-blur-xl;
+  }
+  .dark .glass {
+    @apply border-white/10 bg-white/5;
+  }
+
+  .brand-gradient {
+    @apply bg-gradient-to-br from-brand-500 via-brand-600 to-cyan-700;
+  }
+
+  .brand-text-gradient {
+    @apply bg-gradient-to-r from-brand-400 to-accent-400 bg-clip-text text-transparent;
+  }
+}
+
+/* Custom scrollbar for a sleeker feel. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-slate-300 dark:bg-slate-700;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
